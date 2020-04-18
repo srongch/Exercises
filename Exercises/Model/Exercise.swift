@@ -12,7 +12,11 @@ typealias CategoryId = Int
 typealias EquipmentIdList = [Int]
 typealias MusclesIdList = [Int]
 
-struct Exercise: Codable {
+protocol Searchable  {
+    var name: String { get }
+}
+
+struct Exercise: Codable, Searchable {
     let id: Int
     let name: String
     let categoryId: CategoryId

@@ -18,7 +18,7 @@ struct PromiseLoader<T>{
             handler(.success(result))
         }.catch {error in
             print(error.localizedDescription)
-            fatalError("error")
+       //     fatalError("error")
             handler(.failure(error))
             //                guard let strongSelf = self else { return }
             //                strongSelf.delegate?.error(error: error.localizedDescription)

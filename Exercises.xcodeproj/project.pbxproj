@@ -10,6 +10,18 @@
 		7BF20E51FCB32B7707C28411 /* Pods_ExercisesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC7B878919524B0D10B3E81 /* Pods_ExercisesTests.framework */; };
 		A595E8498562814E2B0A01B4 /* Pods_Exercises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2456203FF1485B3BF7BAE6 /* Pods_Exercises.framework */; };
 		CE31D36593B8058562D2E465 /* Pods_Exercises_ExercisesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49E817908886305464F9E7B /* Pods_Exercises_ExercisesUITests.framework */; };
+		D11928D1244B1D720020D8C9 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11928CF244B1D720020D8C9 /* LoadingCell.swift */; };
+		D11928D2244B1D720020D8C9 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D11928D0244B1D720020D8C9 /* LoadingCell.xib */; };
+		D11928D6244B1E140020D8C9 /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11928D5244B1E140020D8C9 /* NSObject+ClassName.swift */; };
+		D11928D9244B22350020D8C9 /* ExerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11928D7244B22350020D8C9 /* ExerciseCollectionViewCell.swift */; };
+		D11928DA244B22350020D8C9 /* ExerciseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D11928D8244B22350020D8C9 /* ExerciseCollectionViewCell.xib */; };
+		D11928DC244B369E0020D8C9 /* ExerciseCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11928DB244B369E0020D8C9 /* ExerciseCellModel.swift */; };
+		D11928DE244B3BF50020D8C9 /* CollectionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11928DD244B3BF50020D8C9 /* CollectionExt.swift */; };
+		D11928E1244B5D0C0020D8C9 /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11928DF244B5D0C0020D8C9 /* EmptyCollectionViewCell.swift */; };
+		D11928E2244B5D0C0020D8C9 /* EmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D11928E0244B5D0C0020D8C9 /* EmptyCollectionViewCell.xib */; };
+		D11928E4244B640E0020D8C9 /* ExerciseListViewController+SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11928E3244B640E0020D8C9 /* ExerciseListViewController+SearchViewController.swift */; };
+		D11928E6244B75D60020D8C9 /* ExerciseSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11928E5244B75D60020D8C9 /* ExerciseSearch.swift */; };
+		D11928E8244B79590020D8C9 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11928E7244B79590020D8C9 /* SearchManager.swift */; };
 		D17747E62449ECDF005C6BBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17747E52449ECDF005C6BBD /* AppDelegate.swift */; };
 		D17747E82449ECDF005C6BBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17747E72449ECDF005C6BBD /* SceneDelegate.swift */; };
 		D17747EA2449ECDF005C6BBD /* ExerciseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17747E92449ECDF005C6BBD /* ExerciseListViewController.swift */; };
@@ -31,7 +43,7 @@
 		D1774833244A3C5C005C6BBD /* CustomKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1774832244A3C5C005C6BBD /* CustomKey.swift */; };
 		D1774835244A3E6F005C6BBD /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1774834244A3E6F005C6BBD /* ImageCell.swift */; };
 		D1F99F58244A5A19003D0398 /* PromiseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F99F57244A5A19003D0398 /* PromiseLoader.swift */; };
-		D1F99F5A244A5F50003D0398 /* MusclesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F99F59244A5F50003D0398 /* MusclesManager.swift */; };
+		D1F99F5A244A5F50003D0398 /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F99F59244A5F50003D0398 /* ListManager.swift */; };
 		D1F99F5C244A76E2003D0398 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F99F5B244A76E2003D0398 /* Filter.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +72,18 @@
 		7DF4F9736D46BF430C5CCD53 /* Pods-Exercises-ExercisesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exercises-ExercisesUITests.debug.xcconfig"; path = "Target Support Files/Pods-Exercises-ExercisesUITests/Pods-Exercises-ExercisesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8DE133CFAD8195B033FE09A5 /* Pods-ExercisesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExercisesTests.release.xcconfig"; path = "Target Support Files/Pods-ExercisesTests/Pods-ExercisesTests.release.xcconfig"; sourceTree = "<group>"; };
 		BD2456203FF1485B3BF7BAE6 /* Pods_Exercises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exercises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D11928CF244B1D720020D8C9 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		D11928D0244B1D720020D8C9 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
+		D11928D5244B1E140020D8C9 /* NSObject+ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
+		D11928D7244B22350020D8C9 /* ExerciseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCollectionViewCell.swift; sourceTree = "<group>"; };
+		D11928D8244B22350020D8C9 /* ExerciseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExerciseCollectionViewCell.xib; sourceTree = "<group>"; };
+		D11928DB244B369E0020D8C9 /* ExerciseCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCellModel.swift; sourceTree = "<group>"; };
+		D11928DD244B3BF50020D8C9 /* CollectionExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExt.swift; sourceTree = "<group>"; };
+		D11928DF244B5D0C0020D8C9 /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
+		D11928E0244B5D0C0020D8C9 /* EmptyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCollectionViewCell.xib; sourceTree = "<group>"; };
+		D11928E3244B640E0020D8C9 /* ExerciseListViewController+SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseListViewController+SearchViewController.swift"; sourceTree = "<group>"; };
+		D11928E5244B75D60020D8C9 /* ExerciseSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSearch.swift; sourceTree = "<group>"; };
+		D11928E7244B79590020D8C9 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		D17747E22449ECDF005C6BBD /* Exercises.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exercises.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17747E52449ECDF005C6BBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17747E72449ECDF005C6BBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,7 +111,7 @@
 		D1774832244A3C5C005C6BBD /* CustomKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKey.swift; sourceTree = "<group>"; };
 		D1774834244A3E6F005C6BBD /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		D1F99F57244A5A19003D0398 /* PromiseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseLoader.swift; sourceTree = "<group>"; };
-		D1F99F59244A5F50003D0398 /* MusclesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusclesManager.swift; sourceTree = "<group>"; };
+		D1F99F59244A5F50003D0398 /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
 		D1F99F5B244A76E2003D0398 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		E4728E76DCED7ABC083EBDD9 /* Pods-ExercisesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExercisesTests.debug.xcconfig"; path = "Target Support Files/Pods-ExercisesTests/Pods-ExercisesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F49E817908886305464F9E7B /* Pods_Exercises_ExercisesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exercises_ExercisesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +195,13 @@
 				D17747F02449ECE4005C6BBD /* LaunchScreen.storyboard */,
 				D17747F32449ECE4005C6BBD /* Info.plist */,
 				D1774829244A11C6005C6BBD /* ExerciseListViewModel.swift */,
+				D11928CF244B1D720020D8C9 /* LoadingCell.swift */,
+				D11928D0244B1D720020D8C9 /* LoadingCell.xib */,
+				D11928D7244B22350020D8C9 /* ExerciseCollectionViewCell.swift */,
+				D11928D8244B22350020D8C9 /* ExerciseCollectionViewCell.xib */,
+				D11928DF244B5D0C0020D8C9 /* EmptyCollectionViewCell.swift */,
+				D11928E0244B5D0C0020D8C9 /* EmptyCollectionViewCell.xib */,
+				D11928E3244B640E0020D8C9 /* ExerciseListViewController+SearchViewController.swift */,
 			);
 			path = Exercises;
 			sourceTree = "<group>";
@@ -203,6 +234,8 @@
 				D1774830244A3963005C6BBD /* List.swift */,
 				D1774832244A3C5C005C6BBD /* CustomKey.swift */,
 				D1F99F5B244A76E2003D0398 /* Filter.swift */,
+				D11928DB244B369E0020D8C9 /* ExerciseCellModel.swift */,
+				D11928E5244B75D60020D8C9 /* ExerciseSearch.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,7 +246,8 @@
 				D1774825244A03B3005C6BBD /* ExerciseApi.swift */,
 				D1774827244A06EE005C6BBD /* ExerciseNetwork.swift */,
 				D1F99F57244A5A19003D0398 /* PromiseLoader.swift */,
-				D1F99F59244A5F50003D0398 /* MusclesManager.swift */,
+				D1F99F59244A5F50003D0398 /* ListManager.swift */,
+				D11928E7244B79590020D8C9 /* SearchManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -223,6 +257,8 @@
 			children = (
 				D177482C244A2463005C6BBD /* UrlExt.swift */,
 				D177482E244A248C005C6BBD /* StringExt.swift */,
+				D11928D5244B1E140020D8C9 /* NSObject+ClassName.swift */,
+				D11928DD244B3BF50020D8C9 /* CollectionExt.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -346,8 +382,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D11928E2244B5D0C0020D8C9 /* EmptyCollectionViewCell.xib in Resources */,
 				D17747F22449ECE4005C6BBD /* LaunchScreen.storyboard in Resources */,
 				D17747EF2449ECE4005C6BBD /* Assets.xcassets in Resources */,
+				D11928D2244B1D720020D8C9 /* LoadingCell.xib in Resources */,
+				D11928DA244B22350020D8C9 /* ExerciseCollectionViewCell.xib in Resources */,
 				D17747ED2449ECDF005C6BBD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,7 +516,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D177482A244A11C6005C6BBD /* ExerciseListViewModel.swift in Sources */,
+				D11928DC244B369E0020D8C9 /* ExerciseCellModel.swift in Sources */,
 				D17747EA2449ECDF005C6BBD /* ExerciseListViewController.swift in Sources */,
+				D11928D9244B22350020D8C9 /* ExerciseCollectionViewCell.swift in Sources */,
 				D1774828244A06EE005C6BBD /* ExerciseNetwork.swift in Sources */,
 				D17747E62449ECDF005C6BBD /* AppDelegate.swift in Sources */,
 				D1F99F58244A5A19003D0398 /* PromiseLoader.swift in Sources */,
@@ -487,13 +528,20 @@
 				D177482D244A2463005C6BBD /* UrlExt.swift in Sources */,
 				D1774823244A0032005C6BBD /* ModelList.swift in Sources */,
 				D177481D2449FB62005C6BBD /* Item.swift in Sources */,
+				D11928E6244B75D60020D8C9 /* ExerciseSearch.swift in Sources */,
 				D177481F2449FC35005C6BBD /* Image.swift in Sources */,
+				D11928E8244B79590020D8C9 /* SearchManager.swift in Sources */,
 				D1774826244A03B3005C6BBD /* ExerciseApi.swift in Sources */,
-				D1F99F5A244A5F50003D0398 /* MusclesManager.swift in Sources */,
+				D1F99F5A244A5F50003D0398 /* ListManager.swift in Sources */,
 				D177482F244A248C005C6BBD /* StringExt.swift in Sources */,
 				D1774833244A3C5C005C6BBD /* CustomKey.swift in Sources */,
 				D17748212449FC8C005C6BBD /* Exercise.swift in Sources */,
+				D11928D6244B1E140020D8C9 /* NSObject+ClassName.swift in Sources */,
+				D11928DE244B3BF50020D8C9 /* CollectionExt.swift in Sources */,
 				D1774835244A3E6F005C6BBD /* ImageCell.swift in Sources */,
+				D11928E1244B5D0C0020D8C9 /* EmptyCollectionViewCell.swift in Sources */,
+				D11928E4244B640E0020D8C9 /* ExerciseListViewController+SearchViewController.swift in Sources */,
+				D11928D1244B1D720020D8C9 /* LoadingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

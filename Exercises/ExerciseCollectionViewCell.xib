@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ExerciseCollectionViewCell" customModule="Exercises" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="176"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="176"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="INJ-Jk-Gy3">
+                        <rect key="frame" x="0.0" y="0.0" width="141" height="176"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="INJ-Jk-Gy3" secondAttribute="height" multiplier="0.8:1" id="lOP-ZJ-J3E"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Jhq-nh-gHn">
+                        <rect key="frame" x="151" y="10" width="324" height="156"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IR8-8s-U6C">
+                                <rect key="frame" x="0.0" y="0.0" width="324" height="43.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8FO-Z2-GyO">
+                                        <rect key="frame" x="0.0" y="0.0" width="324" height="18"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" name of the exercise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIZ-tB-AVn">
+                                        <rect key="frame" x="0.0" y="23" width="324" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="equipment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="DFB-Kv-7pE">
+                                <rect key="frame" x="0.0" y="82" width="324" height="18"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="muscles" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="5PH-yP-380">
+                                <rect key="frame" x="0.0" y="138" width="324" height="18"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Jhq-nh-gHn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="1iM-LE-o1E"/>
+                <constraint firstItem="INJ-Jk-Gy3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4KA-2I-kHY"/>
+                <constraint firstItem="INJ-Jk-Gy3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="EaN-fU-sXc"/>
+                <constraint firstAttribute="trailing" secondItem="Jhq-nh-gHn" secondAttribute="trailing" constant="5" id="GB5-b4-LfV"/>
+                <constraint firstAttribute="bottom" secondItem="INJ-Jk-Gy3" secondAttribute="bottom" id="SgL-a2-PcV"/>
+                <constraint firstAttribute="bottom" secondItem="Jhq-nh-gHn" secondAttribute="bottom" constant="10" id="VvD-dL-2Ug"/>
+                <constraint firstItem="Jhq-nh-gHn" firstAttribute="leading" secondItem="INJ-Jk-Gy3" secondAttribute="trailing" constant="10" id="lfB-Nb-oYT"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="480" height="176"/>
+            <connections>
+                <outlet property="categoryLabel" destination="8FO-Z2-GyO" id="9Lz-Of-aOy"/>
+                <outlet property="equipment" destination="DFB-Kv-7pE" id="DX6-fD-hDT"/>
+                <outlet property="imageView" destination="INJ-Jk-Gy3" id="7oT-aB-Sts"/>
+                <outlet property="muscles" destination="5PH-yP-380" id="vBJ-Hm-3ff"/>
+                <outlet property="nameLabel" destination="VIZ-tB-AVn" id="f3I-GK-RTE"/>
+            </connections>
+            <point key="canvasLocation" x="-152" y="0.0"/>
+        </collectionViewCell>
+    </objects>
+</document>

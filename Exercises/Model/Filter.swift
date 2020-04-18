@@ -15,8 +15,6 @@ enum Filter {
         switch self {
         case .muscles (let value):
             return ("muscles", value)
-        default:
-           break
         }
     }
 }

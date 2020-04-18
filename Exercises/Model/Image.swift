@@ -17,6 +17,10 @@ struct Image: Codable, Identifiable {
     let image: String
     let isMain: Bool
     let exercise: Int
+
+    var name: String {
+        return image
+    }
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -26,6 +30,7 @@ struct Image: Codable, Identifiable {
     }
     
 }
+
 
 extension Image: Mappable{
     var mapKey: Int {

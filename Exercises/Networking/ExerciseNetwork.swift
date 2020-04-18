@@ -16,16 +16,18 @@ typealias ImageList = ModelList<Image>
 typealias CategoryList = ModelList<Item>
 typealias MusclesList = ModelList<Item>
 typealias EquimentList = ModelList<Item>
+typealias SearchExerciseList = ExerciseSearchList
 
 protocol ExerciseNetworkProtocol {
     
     //Get all car information from carList.json
-    func getExerciseList(page: Int, name: String?, filter: Filter? )-> Promise<ExerciseList>
+    func getExerciseList(page: Int, filter: Filter? )-> Promise<ExerciseList>
     
     func getCategoryList() -> Promise<CategoryList>
     func getMusclesList() -> Promise<MusclesList>
     func getEquimentList() -> Promise<EquimentList>
     func getImageList(for exerciseId: Id) -> Promise<ImageList>
+    func searchExercise(for term: String) -> Promise<SearchExerciseList>
     
 //    //Get car list from API
 //    func getCarList(for bounds: MapBound) -> Promise<[Model]>
@@ -35,6 +37,11 @@ protocol ExerciseNetworkProtocol {
 }
 
 final class ExerciseNetwork : ExerciseNetworkProtocol{
+    func searchExercise(for term: String) -> Promise<SearchExerciseList> {
+        return request(task: ExerciseApi.searchExercise(term: term), value: SearchExerciseList.self)
+    }
+    
+    
     
     let provider: MoyaProvider<ExerciseApi>
     
@@ -54,8 +61,8 @@ final class ExerciseNetwork : ExerciseNetworkProtocol{
         return request(task: ExerciseApi.getEquipment, value: EquimentList.self)
     }
     
-    func getExerciseList(page: Int, name: String? = nil, filter: Filter? = nil)-> Promise<ExerciseList>{
-        return request(task: ExerciseApi.getExercise(page: page, name: name, filter: filter ), value: ExerciseList.self)
+    func getExerciseList(page: Int, filter: Filter? = nil)-> Promise<ExerciseList>{
+        return request(task: ExerciseApi.getExercise(page: page, filter: filter ), value: ExerciseList.self)
     }
     
     func getImageList(for exerciseId: Id) -> Promise<ImageList>{
@@ -68,8 +75,10 @@ final class ExerciseNetwork : ExerciseNetworkProtocol{
                 switch result {
                 case .success(let response):
                     do {
+                     //   let value: Data // received from a network request, for example
+                     //   let json = try response.mapJSON()
                         let result = try response.map(value)
-                        //  print(result)
+                  //        print(json)
                         seal.fulfill(result)
                     } catch {
                         seal.reject(error)

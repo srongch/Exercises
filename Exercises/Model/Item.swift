@@ -10,6 +10,7 @@ import Foundation
 
 protocol Identifiable {
     var id: Int { get }
+    var name: String {get}
 }
 
 struct Item: Codable, Identifiable {

@@ -23,7 +23,9 @@ private extension String {
 }
 
 enum ExerciseApi {
-    case getExercise(page: Int, name: String?, filter: Filter? )
+    case searchExercise(term: String)
+    case getExerciseById(id: Int)
+    case getExercise(page: Int, filter: Filter? )
     case getImage(exerciseId: Int)
     case getEquipment
     case getMuscle
@@ -36,32 +38,41 @@ extension ExerciseApi: TargetType {
     }
     public var path: String {
         switch self {
+        case .searchExercise: return "exercise/search/"
         case .getExercise: return "exercise/"
         case .getImage: return "exerciseimage/"
         case .getEquipment: return "equipment/"
         case .getMuscle: return "muscle/"
         case .getCategory: return "exercisecategory/"
+        case .getExerciseById(let id): return "exercise/" + String(id) + "/"
         }
     }
     public var method: Moya.Method {
-        switch self {
-            //        case .getAddress: return .get
-        //        case .getList: return .get
-        case .getExercise, .getImage, .getEquipment, .getCategory, .getMuscle: return .get
-        }
+        return .get
+//        switch self {
+//            //        case .getAddress: return .get
+//        //        case .getList: return .get
+//        case .getExercise, .getImage, .getEquipment, .getCategory, .getMuscle: return .get
+//        }
     }
     public var task: Task {
         switch self {
-        case .getExercise(let page, let name, let filter):
-            var params: [String: Any] =  ["status": "2", "ordering":"id", "page": page]
-            if (name != nil) { params["name"] = name }
+        case .getExercise(let page, let filter):
+            var params: [String: Any] =  ["status": "2", "page": page]
             if (filter != nil) { params[filter!.value.key] = filter!.value.value }
+            print("calling at param: \(params)")
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
         case .getCategory, .getEquipment,.getMuscle:
             return .requestPlain
         case .getImage(let exerciseId):
             let params: [String: Any] =  ["exercise": exerciseId]
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+        case .searchExercise(let term):
+            let params: [String: Any] =  ["term": term]
+            print("searchExercise at param: \(params)")
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+        case .getExerciseById(id: let id):
+            return .requestPlain
         }
     }
     public var validationType: ValidationType {
