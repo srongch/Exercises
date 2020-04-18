@@ -6,6 +6,9 @@ target 'Exercises' do
   use_frameworks!
 
   # Pods for Exercises
+  pod 'Moya', '~> 14.0'
+  pod "PromiseKit", "~> 6.8"
+  pod 'SDWebImage', '~> 5.0'
 
   target 'ExercisesTests' do
     inherit! :search_paths
