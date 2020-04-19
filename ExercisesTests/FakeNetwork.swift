@@ -13,15 +13,19 @@ import Moya
 
 class FakeNetwork: ExerciseNetworkProtocol{
     
-   
+    
     func getExerciseList(page: Int, filter: Filter?) -> Promise<ExerciseList> {
+        
         return Promise { seal in
             seal.fulfill(MockData.exerciseList(page: page))
         }
     }
     
+    
     func getExercisebyId(exerciseId: Int) -> Promise<ExerciseInfo> {
-        <#code#>
+        return Promise { seal in
+            seal.fulfill(MockData.getExercisebyId(id: exerciseId))
+        }
     }
     
     func getCategoryList() -> Promise<CategoryList> {

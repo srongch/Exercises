@@ -38,9 +38,30 @@ struct MockData {
         if page == 1 {
             return ModelList<Exercise>.init(count: 4, next: "https://wger.de/api/v2/exercise/?page=2&status=2", previous: nil, list: Exercise.pageOne )
         }else{
-            return ModelList<Exercise>.init(count: 4, next: nil, previous: "https://wger.de/api/v2/exercise/?status=2", list:  Exercise.pageTwo )
+            return ModelList<Exercise>.init(count: 4, next: nil, previous: "https://wger.de/api/v2/exercise/?page=1&status=2", list:  Exercise.pageTwo )
+        }
+    }
+    
+    static func getExercisebyId(id: Int) -> ExerciseInfo{
+        let combine = Exercise.pageOne + Exercise.pageTwo
+        let exercise = combine.filter{
+            $0.id == id
+        }.first!
+        
+        let category = MockData.categoryList().toDictionary()[id] ?? Item.init(id: 1, name: "Abs")
+        let musclesList = exercise.musclesIdList.map{
+            MockData.muscleForId(id: $0)
+        }
+        let musclesListSub = exercise.musclesSecondaryIdList.map{
+            MockData.muscleForId(id: $0)
         }
         
+        let equipmentList = exercise.equipmentIdList.map{
+            MockData.equimentListList().toDictionary()[$0]
+        }
+        
+        let exerciseInfor = ExerciseInfo.init(name: exercise.name, category: category , description: "", muscles: musclesList as! [Item], musclesSecondary: musclesListSub as! [Item], equipment: equipmentList as! [Item])
+        return exerciseInfor
     }
     
     static func categoryList()-> CategoryList {

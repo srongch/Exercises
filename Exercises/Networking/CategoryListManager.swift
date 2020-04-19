@@ -16,5 +16,6 @@ final class CategoryListManager: ListManager<CategoryList> {
      
      override func finalTask() {
          self.dictionary = self.list?.toDictionary()
+        super.finalTask()
      }
 }

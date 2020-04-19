@@ -16,5 +16,6 @@ final class EquipmentListManager: ListManager<EquimentList> {
      
      override func finalTask() {
          self.dictionary = self.list?.toDictionary()
+        super.finalTask()
      }
 }
