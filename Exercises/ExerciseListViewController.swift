@@ -34,7 +34,7 @@ class ExerciseListViewController: UIViewController {
         // Do any additional setup after loading the view.
         //   fectch()
         self.viewModel = ExerciseListViewModel.init(network: ExerciseNetwork(provider: MoyaProvider<ExerciseApi>()))
-        
+//        
         self.viewModel.initialFetch(){ [weak self] result in
             switch result {
             case .success:
@@ -46,9 +46,54 @@ class ExerciseListViewController: UIViewController {
         }
         configureCollectionView()
         configureSearchviewController()
+//         self.performSegue(withIdentifier: "detailSegue", sender: nil)
     }
     
     @IBAction func filterButtonPressed(_ sender: Any) {
+    }
+    
+    
+//     MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //         Get the new view controller using segue.destination.
+        //         Pass the selected object to the new view controller.
+        if segue.identifier == "filterIdentifer"{
+            if let destVC = segue.destination as? UINavigationController,
+                let vc = destVC.topViewController as? FilterListViewController {
+                vc.delegate = self
+                if let component = self.viewModel.filterComponents {
+                    vc.viewModel = FilterListViewModel.init(filterList: component.filterList, preSelectedItem: component.preSelectedItem)
+                }else{
+                    fatalError("need a list")
+                }
+               
+            }
+        }else if segue.identifier == "detailSegue" {
+            if let destVC = segue.destination as? ExerciseDetailViewController {
+                let component = self.viewModel.detailComponent
+                if let indexPath = sender as? IndexPath,
+                    let item = self.viewModel.itemAtIdex(index: indexPath.row){
+                    destVC.viewModel = ExerciseDetailViewModel.init(exerciseId: item.id, exerciseInforManger: component.exerciseInfoManager, imageListManager: component.exerciseImageListManager)
+                }else{
+                    destVC.viewModel = ExerciseDetailViewModel.init(exerciseId: 20, exerciseInforManger: component.exerciseInfoManager, imageListManager: component.exerciseImageListManager)
+                }
+                 
+            }
+        }
+        
+    }
+    
+    
+    
+}
+
+extension ExerciseListViewController: FilterListViewControllerResultDelegate{
+    func didSelctedItem(_ viewControler: FilterListViewController, item: Identifiable) {
+        print(item)
+        self.viewModel.selectedBodyPart = item
+        viewControler.dismiss(animated: true, completion: nil)
     }
     
     
@@ -62,7 +107,7 @@ extension ExerciseListViewController {
     // 2
     searchController.obscuresBackgroundDuringPresentation = false
     // 3
-    searchController.searchBar.placeholder = "Search Candies"
+    searchController.searchBar.placeholder = "Search Exercise"
     // 4
     navigationItem.searchController = searchController
     // 5
@@ -211,6 +256,12 @@ extension ExerciseListViewController {
 
 
 extension ExerciseListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "detailSegue", sender: indexPath)
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //        return self.viewModel.nu
         let sectionLayoutKind = Section.allCases[section]
@@ -277,9 +328,16 @@ extension ExerciseListViewController: UICollectionViewDelegate, UICollectionView
             print("load more")
             self.viewModel.loadMore()
         }
-        
-        //        for indexPath in indexPaths {
-        //            _ =   self.viewModel.loadImage(at: indexPath, size: cellSize, notifiedWhenFinish: true)
-        //        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let sectionLayoutKind = Section.allCases[indexPath.section]
+        switch sectionLayoutKind {
+        case .reload:
+            print("will display reload")
+            self.viewModel.loadMore()
+        default:
+            break
+        }
     }
 }

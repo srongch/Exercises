@@ -12,11 +12,15 @@ protocol ExerciceInforViewable {
     var id: Int {get}
     var name: String { get }
     var categoryName: String { get }
+    var description: String? { get }
     var mainImage: String? { get }
     var allImage: [String]? { get }
     var equimentsList: String { get }
     var musclesList: String { get }
+    var allEquiments: [String] { get }
+    var allMusclesList: [String] { get }
 }
+
 
 struct ExerciseCellModel: ExerciceInforViewable {
     let id: Int
@@ -25,6 +29,7 @@ struct ExerciseCellModel: ExerciceInforViewable {
     let image: [Identifiable]?
     let equiments: [Identifiable]?
     let muscles: [Identifiable]?
+    let description: String?
     
     var allImage: [String]? {
         guard let first = self.image else {return nil}
@@ -51,4 +56,13 @@ struct ExerciseCellModel: ExerciceInforViewable {
         guard let muscles = self.muscles, muscles.count > 0 else {return ""}
         return "💪" + muscles.map({$0.name}).joined(separator: ", ")
     }
+    
+    var allEquiments: [String] {
+        return equiments?.compactMap({$0.name}) ?? []
+    }
+    
+    var allMusclesList: [String] {
+        return muscles?.compactMap({$0.name}) ?? []
+    }
+    
 }

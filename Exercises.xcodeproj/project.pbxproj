@@ -22,6 +22,7 @@
 		D11928E4244B640E0020D8C9 /* ExerciseListViewController+SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11928E3244B640E0020D8C9 /* ExerciseListViewController+SearchViewController.swift */; };
 		D11928E6244B75D60020D8C9 /* ExerciseSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11928E5244B75D60020D8C9 /* ExerciseSearch.swift */; };
 		D11928E8244B79590020D8C9 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11928E7244B79590020D8C9 /* SearchManager.swift */; };
+		D11928EA244BB32F0020D8C9 /* FilterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11928E9244BB32F0020D8C9 /* FilterListViewController.swift */; };
 		D17747E62449ECDF005C6BBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17747E52449ECDF005C6BBD /* AppDelegate.swift */; };
 		D17747E82449ECDF005C6BBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17747E72449ECDF005C6BBD /* SceneDelegate.swift */; };
 		D17747EA2449ECDF005C6BBD /* ExerciseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17747E92449ECDF005C6BBD /* ExerciseListViewController.swift */; };
@@ -42,6 +43,22 @@
 		D1774831244A3963005C6BBD /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1774830244A3963005C6BBD /* List.swift */; };
 		D1774833244A3C5C005C6BBD /* CustomKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1774832244A3C5C005C6BBD /* CustomKey.swift */; };
 		D1774835244A3E6F005C6BBD /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1774834244A3E6F005C6BBD /* ImageCell.swift */; };
+		D1830C39244C495600B9A01D /* FilterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1830C38244C495600B9A01D /* FilterListViewModel.swift */; };
+		D1830C3B244C49B300B9A01D /* FilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1830C3A244C49B300B9A01D /* FilterViewCell.swift */; };
+		D1CA4ACE244C7E6600857617 /* ExerciseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA4ACD244C7E6600857617 /* ExerciseInfo.swift */; };
+		D1CA4AD0244C84EB00857617 /* ExerciseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA4ACF244C84EB00857617 /* ExerciseDetailViewController.swift */; };
+		D1CA4AD4244C8A4200857617 /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA4AD2244C8A4200857617 /* TitleCollectionViewCell.swift */; };
+		D1CA4AD5244C8A4200857617 /* TitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1CA4AD3244C8A4200857617 /* TitleCollectionViewCell.xib */; };
+		D1CA4ADA244C8EFE00857617 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA4AD8244C8EFE00857617 /* ImageCollectionViewCell.swift */; };
+		D1CA4ADB244C8EFE00857617 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1CA4AD9244C8EFE00857617 /* ImageCollectionViewCell.xib */; };
+		D1CA4ADD244C8F6500857617 /* roberto-nickson-_em5tYXuOQc-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D1CA4ADC244C8F6400857617 /* roberto-nickson-_em5tYXuOQc-unsplash.jpg */; };
+		D1CA4ADF244C940F00857617 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA4ADE244C940F00857617 /* HeaderView.swift */; };
+		D1CA4AE2244C963500857617 /* TextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA4AE0244C963500857617 /* TextCollectionViewCell.swift */; };
+		D1CA4AE3244C963500857617 /* TextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1CA4AE1244C963500857617 /* TextCollectionViewCell.xib */; };
+		D1CA4AE5244CB39E00857617 /* ExerciseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA4AE4244CB39E00857617 /* ExerciseDetailViewModel.swift */; };
+		D1CA4AE7244CB40700857617 /* ExerciseInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA4AE6244CB40700857617 /* ExerciseInfoManager.swift */; };
+		D1CA4AE9244CC49400857617 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CA4AE8244CC49400857617 /* CustomError.swift */; };
+		D1E001B0244CD9F20078EDBC /* ExerciseDetailViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E001AF244CD9F20078EDBC /* ExerciseDetailViewController+Layout.swift */; };
 		D1F99F58244A5A19003D0398 /* PromiseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F99F57244A5A19003D0398 /* PromiseLoader.swift */; };
 		D1F99F5A244A5F50003D0398 /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F99F59244A5F50003D0398 /* ListManager.swift */; };
 		D1F99F5C244A76E2003D0398 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F99F5B244A76E2003D0398 /* Filter.swift */; };
@@ -84,6 +101,7 @@
 		D11928E3244B640E0020D8C9 /* ExerciseListViewController+SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseListViewController+SearchViewController.swift"; sourceTree = "<group>"; };
 		D11928E5244B75D60020D8C9 /* ExerciseSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSearch.swift; sourceTree = "<group>"; };
 		D11928E7244B79590020D8C9 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		D11928E9244BB32F0020D8C9 /* FilterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListViewController.swift; sourceTree = "<group>"; };
 		D17747E22449ECDF005C6BBD /* Exercises.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exercises.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17747E52449ECDF005C6BBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17747E72449ECDF005C6BBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +128,22 @@
 		D1774830244A3963005C6BBD /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		D1774832244A3C5C005C6BBD /* CustomKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKey.swift; sourceTree = "<group>"; };
 		D1774834244A3E6F005C6BBD /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		D1830C38244C495600B9A01D /* FilterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListViewModel.swift; sourceTree = "<group>"; };
+		D1830C3A244C49B300B9A01D /* FilterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewCell.swift; sourceTree = "<group>"; };
+		D1CA4ACD244C7E6600857617 /* ExerciseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInfo.swift; sourceTree = "<group>"; };
+		D1CA4ACF244C84EB00857617 /* ExerciseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailViewController.swift; sourceTree = "<group>"; };
+		D1CA4AD2244C8A4200857617 /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		D1CA4AD3244C8A4200857617 /* TitleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleCollectionViewCell.xib; sourceTree = "<group>"; };
+		D1CA4AD8244C8EFE00857617 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		D1CA4AD9244C8EFE00857617 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		D1CA4ADC244C8F6400857617 /* roberto-nickson-_em5tYXuOQc-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "roberto-nickson-_em5tYXuOQc-unsplash.jpg"; sourceTree = "<group>"; };
+		D1CA4ADE244C940F00857617 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		D1CA4AE0244C963500857617 /* TextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCollectionViewCell.swift; sourceTree = "<group>"; };
+		D1CA4AE1244C963500857617 /* TextCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCollectionViewCell.xib; sourceTree = "<group>"; };
+		D1CA4AE4244CB39E00857617 /* ExerciseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailViewModel.swift; sourceTree = "<group>"; };
+		D1CA4AE6244CB40700857617 /* ExerciseInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInfoManager.swift; sourceTree = "<group>"; };
+		D1CA4AE8244CC49400857617 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		D1E001AF244CD9F20078EDBC /* ExerciseDetailViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseDetailViewController+Layout.swift"; sourceTree = "<group>"; };
 		D1F99F57244A5A19003D0398 /* PromiseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseLoader.swift; sourceTree = "<group>"; };
 		D1F99F59244A5F50003D0398 /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
 		D1F99F5B244A76E2003D0398 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
@@ -183,6 +217,8 @@
 		D17747E42449ECDF005C6BBD /* Exercises */ = {
 			isa = PBXGroup;
 			children = (
+				D1CA4AD1244C84F400857617 /* Detail */,
+				D1830C37244C492900B9A01D /* Filter */,
 				D1774834244A3E6F005C6BBD /* ImageCell.swift */,
 				D177482B244A2450005C6BBD /* Extension */,
 				D1774824244A036F005C6BBD /* Networking */,
@@ -202,6 +238,7 @@
 				D11928DF244B5D0C0020D8C9 /* EmptyCollectionViewCell.swift */,
 				D11928E0244B5D0C0020D8C9 /* EmptyCollectionViewCell.xib */,
 				D11928E3244B640E0020D8C9 /* ExerciseListViewController+SearchViewController.swift */,
+				D1CA4AE8244CC49400857617 /* CustomError.swift */,
 			);
 			path = Exercises;
 			sourceTree = "<group>";
@@ -236,6 +273,7 @@
 				D1F99F5B244A76E2003D0398 /* Filter.swift */,
 				D11928DB244B369E0020D8C9 /* ExerciseCellModel.swift */,
 				D11928E5244B75D60020D8C9 /* ExerciseSearch.swift */,
+				D1CA4ACD244C7E6600857617 /* ExerciseInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -248,6 +286,7 @@
 				D1F99F57244A5A19003D0398 /* PromiseLoader.swift */,
 				D1F99F59244A5F50003D0398 /* ListManager.swift */,
 				D11928E7244B79590020D8C9 /* SearchManager.swift */,
+				D1CA4AE6244CB40700857617 /* ExerciseInfoManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -261,6 +300,34 @@
 				D11928DD244B3BF50020D8C9 /* CollectionExt.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		D1830C37244C492900B9A01D /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				D11928E9244BB32F0020D8C9 /* FilterListViewController.swift */,
+				D1830C38244C495600B9A01D /* FilterListViewModel.swift */,
+				D1830C3A244C49B300B9A01D /* FilterViewCell.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		D1CA4AD1244C84F400857617 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D1CA4ADE244C940F00857617 /* HeaderView.swift */,
+				D1CA4ADC244C8F6400857617 /* roberto-nickson-_em5tYXuOQc-unsplash.jpg */,
+				D1CA4ACF244C84EB00857617 /* ExerciseDetailViewController.swift */,
+				D1CA4AD2244C8A4200857617 /* TitleCollectionViewCell.swift */,
+				D1CA4AD3244C8A4200857617 /* TitleCollectionViewCell.xib */,
+				D1CA4AD8244C8EFE00857617 /* ImageCollectionViewCell.swift */,
+				D1CA4AD9244C8EFE00857617 /* ImageCollectionViewCell.xib */,
+				D1CA4AE0244C963500857617 /* TextCollectionViewCell.swift */,
+				D1CA4AE1244C963500857617 /* TextCollectionViewCell.xib */,
+				D1CA4AE4244CB39E00857617 /* ExerciseDetailViewModel.swift */,
+				D1E001AF244CD9F20078EDBC /* ExerciseDetailViewController+Layout.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		E9D36813D00769E5FC7294A1 /* Frameworks */ = {
@@ -387,6 +454,10 @@
 				D17747EF2449ECE4005C6BBD /* Assets.xcassets in Resources */,
 				D11928D2244B1D720020D8C9 /* LoadingCell.xib in Resources */,
 				D11928DA244B22350020D8C9 /* ExerciseCollectionViewCell.xib in Resources */,
+				D1CA4AE3244C963500857617 /* TextCollectionViewCell.xib in Resources */,
+				D1CA4ADD244C8F6500857617 /* roberto-nickson-_em5tYXuOQc-unsplash.jpg in Resources */,
+				D1CA4AD5244C8A4200857617 /* TitleCollectionViewCell.xib in Resources */,
+				D1CA4ADB244C8EFE00857617 /* ImageCollectionViewCell.xib in Resources */,
 				D17747ED2449ECDF005C6BBD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,11 +586,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1CA4ADA244C8EFE00857617 /* ImageCollectionViewCell.swift in Sources */,
 				D177482A244A11C6005C6BBD /* ExerciseListViewModel.swift in Sources */,
 				D11928DC244B369E0020D8C9 /* ExerciseCellModel.swift in Sources */,
 				D17747EA2449ECDF005C6BBD /* ExerciseListViewController.swift in Sources */,
+				D1CA4AD0244C84EB00857617 /* ExerciseDetailViewController.swift in Sources */,
 				D11928D9244B22350020D8C9 /* ExerciseCollectionViewCell.swift in Sources */,
 				D1774828244A06EE005C6BBD /* ExerciseNetwork.swift in Sources */,
+				D1CA4AE2244C963500857617 /* TextCollectionViewCell.swift in Sources */,
+				D1CA4ACE244C7E6600857617 /* ExerciseInfo.swift in Sources */,
 				D17747E62449ECDF005C6BBD /* AppDelegate.swift in Sources */,
 				D1F99F58244A5A19003D0398 /* PromiseLoader.swift in Sources */,
 				D1774831244A3963005C6BBD /* List.swift in Sources */,
@@ -527,16 +602,25 @@
 				D1F99F5C244A76E2003D0398 /* Filter.swift in Sources */,
 				D177482D244A2463005C6BBD /* UrlExt.swift in Sources */,
 				D1774823244A0032005C6BBD /* ModelList.swift in Sources */,
+				D1CA4AE9244CC49400857617 /* CustomError.swift in Sources */,
+				D1830C39244C495600B9A01D /* FilterListViewModel.swift in Sources */,
 				D177481D2449FB62005C6BBD /* Item.swift in Sources */,
 				D11928E6244B75D60020D8C9 /* ExerciseSearch.swift in Sources */,
+				D11928EA244BB32F0020D8C9 /* FilterListViewController.swift in Sources */,
 				D177481F2449FC35005C6BBD /* Image.swift in Sources */,
+				D1CA4ADF244C940F00857617 /* HeaderView.swift in Sources */,
+				D1E001B0244CD9F20078EDBC /* ExerciseDetailViewController+Layout.swift in Sources */,
 				D11928E8244B79590020D8C9 /* SearchManager.swift in Sources */,
+				D1CA4AE7244CB40700857617 /* ExerciseInfoManager.swift in Sources */,
 				D1774826244A03B3005C6BBD /* ExerciseApi.swift in Sources */,
 				D1F99F5A244A5F50003D0398 /* ListManager.swift in Sources */,
+				D1CA4AE5244CB39E00857617 /* ExerciseDetailViewModel.swift in Sources */,
 				D177482F244A248C005C6BBD /* StringExt.swift in Sources */,
 				D1774833244A3C5C005C6BBD /* CustomKey.swift in Sources */,
 				D17748212449FC8C005C6BBD /* Exercise.swift in Sources */,
 				D11928D6244B1E140020D8C9 /* NSObject+ClassName.swift in Sources */,
+				D1830C3B244C49B300B9A01D /* FilterViewCell.swift in Sources */,
+				D1CA4AD4244C8A4200857617 /* TitleCollectionViewCell.swift in Sources */,
 				D11928DE244B3BF50020D8C9 /* CollectionExt.swift in Sources */,
 				D1774835244A3E6F005C6BBD /* ImageCell.swift in Sources */,
 				D11928E1244B5D0C0020D8C9 /* EmptyCollectionViewCell.swift in Sources */,
@@ -718,6 +802,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6VH8R5WZUX;
 				INFOPLIST_FILE = Exercises/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -737,6 +822,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6VH8R5WZUX;
 				INFOPLIST_FILE = Exercises/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

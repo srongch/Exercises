@@ -9,17 +9,30 @@
 import Foundation
 import PromiseKit
 
+protocol ListManagable {
+    
+}
+
+protocol ListPagingManagable {
+    
+}
+
+typealias PageIndex = Int
+
 class ListManager<T:ModelListProtocol> {
-    let group: DispatchGroup?
+    private var group: DispatchGroup?
     var list: T?
     var dictionary: [Id: Identifiable]?
     internal let network: ExerciseNetworkProtocol
-    var handler: ((Swift.Result<Bool,Error>)-> Void)?
+    var handler: ((Swift.Result<PageIndex,Error>)-> Void)?
     
     var task: Promise<T>?{
         return nil
     }
-    
+    //where inital page is 1
+    var pageIndex: Int{
+        self.list?.currentPage ?? 1
+    }
     var isAllLoaded: Bool = false
     
     init(dispatchGroup: DispatchGroup? = nil, network:ExerciseNetworkProtocol){
@@ -27,7 +40,11 @@ class ListManager<T:ModelListProtocol> {
         self.network = network
     }
     
-    func load(){
+    func load(dispatchGroup: DispatchGroup? = nil){
+        if let group = dispatchGroup {
+            self.group = group
+        }
+        
         guard let task = self.task, !isAllLoaded else{ return }
         self.group?.enter()
         PromiseLoader.load(task:task){[weak self] result in
@@ -52,7 +69,7 @@ class ListManager<T:ModelListProtocol> {
             }
             
             self.isAllLoaded =  (list.next != nil) ? false : true
-            self.handler?(.success(true))
+            self.handler?(.success(self.pageIndex))
         case .failure(let error):
             self.handler?(.failure(error))
             break
@@ -99,14 +116,13 @@ class CategoryListManager: ListManager<CategoryList> {
 class ExerciseListManager: ListManager<ExerciseList>{
     var filter : Filter?
     
+
+    
     func loadMore(filter : Filter?){
         self.set(filter: filter)
         self.load()
     }
     
-    func search(search: String){
-        
-    }
     
     func reload(filter : Filter?){
         self.set(filter: filter)
@@ -128,11 +144,10 @@ class ExerciseImageListManager: ListManager<ImageList>{
     
     var exerciseId : Int = 0
 
-    func loadImageFor(id exerciseId: ExerciseId){
+    func loadImageFor(id exerciseId: ExerciseId, dispatchGroup: DispatchGroup? = nil){
         self.exerciseId = exerciseId
-         self.load()
+         self.load(dispatchGroup: dispatchGroup)
     }
-
     override var task: Promise<ImageList>?{
         return self.network.getImageList(for: exerciseId)
      }

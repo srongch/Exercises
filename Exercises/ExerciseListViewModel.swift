@@ -21,7 +21,18 @@ class ExerciseListViewModel {
     
     private let network: ExerciseNetworkProtocol
     private var nextPage: Int?
-    var filter: Filter?
+    
+    var selectedBodyPart: Identifiable?{
+        didSet {
+            if oldValue?.id != selectedBodyPart?.id{
+                self.fetchExercise()
+            }
+        }
+    }
+    var filter: Filter? {
+        guard let filter = selectedBodyPart, filter.id >= 0 else {return nil}
+        return .category(filter.id)
+    }
     var search: String? {
         didSet {
             if oldValue != search {
@@ -42,7 +53,7 @@ class ExerciseListViewModel {
 //    var imageList: [ExerciseId: [Image]] = [:]
     private var imageList = NSCache<CustomKey<Int>, List<Image>>()
     
-    typealias Handler = (Swift.Result<Bool, Error>) -> Void
+    typealias Handler = (Swift.Result<PageIndex, Error>) -> Void
     var completionHandler: Handler?
     
     var isLoading: Bool = false
@@ -68,6 +79,18 @@ class ExerciseListViewModel {
         }
     }
     
+    var detailComponent:(exerciseInfoManager: ExerciseInfoManager, exerciseImageListManager: ExerciseImageListManager){
+        return ((ExerciseInfoManager.init(networkManager: network),  ExerciseImageListManager.init( network: network)))
+    }
+    var filterComponents:(filterList: [Identifiable], preSelectedItem: Identifiable?)?{
+        guard var filterList = self.categoryListManager.list?.list else {
+            return nil
+        }
+        let allFilter = Item.createExtraIndexItem(name: "All body parts")
+        filterList.insert(allFilter, at: 0)
+        return (filterList, self.selectedBodyPart)
+    }
+    
     init(network: ExerciseNetworkProtocol, initialPage: Int? = 1) {
         self.network = network
         self.nextPage = initialPage
@@ -76,8 +99,8 @@ class ExerciseListViewModel {
         self.equipmentListManager = EquipmentListManager.init(dispatchGroup: group, network: network)
         self.exerciseListManager = ExerciseListManager.init(dispatchGroup: nil, network: network)
         self.exerciseListManager.handler = {[weak self] result in
-            self?.isLoading = false
-            print(self?.exerciseListManager.list)
+             self?.isLoading = false
+            print(self?.exerciseListManager.pageIndex)
             self?.completionHandler?(result)
             
         }
@@ -94,9 +117,9 @@ class ExerciseListViewModel {
         }else{
             self.listState = .all
             if self.numberOfItem() > 0 {
-                self.completionHandler?(.success(true))
+                self.completionHandler?(.success(1))
             }else{
-                self.exerciseListManager.reload(filter: self.filter)
+                self.exerciseListManager.reload(filter: filter)
             }
            
         }
@@ -126,18 +149,16 @@ class ExerciseListViewModel {
         
     }
     
-
-    
     func itemAtIdex(index: Int)-> ExerciceInforViewable? {
         switch self.listState {
         case .all:
             guard let exercise = self.exerciseListManager.list?.itemAtIdex(index: index) else {return nil}
             let category = categoryListManager.itemForIds([exercise.categoryId])
             let equipment = equipmentListManager.itemForIds(exercise.equipmentIdList)
-            let muslces = musclesListManager.itemForIds(exercise.musclesIdList)
+            let muslces = musclesListManager.itemForIds(exercise.musclesIdList) + musclesListManager.itemForIds(exercise.musclesSecondaryIdList)
             let image = self.imageList.object(forKey: CustomKey.init(key: exercise.id))
             
-            let exerciseModel = ExerciseCellModel.init(id: exercise.id, name: exercise.name, category: category, image: image?.list, equiments: equipment, muscles: muslces)
+            let exerciseModel = ExerciseCellModel.init(id: exercise.id, name: exercise.name, category: category, image: image?.list, equiments: equipment, muscles: muslces, description: nil)
             print(exerciseModel)
             return exerciseModel
         default:
@@ -154,13 +175,11 @@ class ExerciseListViewModel {
             return
         }
          self.isLoading = true
-        self.exerciseListManager.loadMore(filter: self.filter)
+        self.exerciseListManager.loadMore(filter:filter )
     }
     
     func fetchExercise(){
-        guard !self.isLoading else {
-            return
-        }
+
         self.isLoading = true
         self.exerciseListManager.reload(filter: self.filter)
     }

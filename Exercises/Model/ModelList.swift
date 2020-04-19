@@ -38,6 +38,21 @@ extension ModelListProtocol {
         self.list += newObject.list
     }
     
+    // where page start from 1
+    var currentPage: Int {
+        let page = (nextPage, previousPage)
+        switch page {
+        case let (nextPage?, previousPage?) where nextPage > 0  || previousPage > 0:
+            return nextPage - 1
+        case let (nextPage?, nil) where nextPage > 0:
+            return nextPage - 1
+        case let (nil, previousPage?) where previousPage > 0:
+            return previousPage + 1
+        default:
+            return 1
+        }
+    }
+    
     
     func numberOfItem()-> Int {
         return self.list.count

@@ -22,12 +22,13 @@ protocol ExerciseNetworkProtocol {
     
     //Get all car information from carList.json
     func getExerciseList(page: Int, filter: Filter? )-> Promise<ExerciseList>
-    
+    func getExercisebyId(exerciseId: Int)-> Promise<ExerciseInfo>
     func getCategoryList() -> Promise<CategoryList>
     func getMusclesList() -> Promise<MusclesList>
     func getEquimentList() -> Promise<EquimentList>
     func getImageList(for exerciseId: Id) -> Promise<ImageList>
     func searchExercise(for term: String) -> Promise<SearchExerciseList>
+    
     
 //    //Get car list from API
 //    func getCarList(for bounds: MapBound) -> Promise<[Model]>
@@ -37,6 +38,10 @@ protocol ExerciseNetworkProtocol {
 }
 
 final class ExerciseNetwork : ExerciseNetworkProtocol{
+    func getExercisebyId(exerciseId: Int) -> Promise<ExerciseInfo> {
+        return request(task: ExerciseApi.getExerciseById(id: exerciseId), value: ExerciseInfo.self)
+    }
+    
     func searchExercise(for term: String) -> Promise<SearchExerciseList> {
         return request(task: ExerciseApi.searchExercise(term: term), value: SearchExerciseList.self)
     }
@@ -76,9 +81,10 @@ final class ExerciseNetwork : ExerciseNetworkProtocol{
                 case .success(let response):
                     do {
                      //   let value: Data // received from a network request, for example
-                     //   let json = try response.mapJSON()
+                        let json = try response.mapJSON()
+                         print(json)
                         let result = try response.map(value)
-                  //        print(json)
+                         
                         seal.fulfill(result)
                     } catch {
                         seal.reject(error)

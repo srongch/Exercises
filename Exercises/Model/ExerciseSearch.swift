@@ -78,7 +78,7 @@ struct ExerciseSearch: Codable {
     let data: SearchResult
     
     var toExerciceInforViewable: ExerciceInforViewable{
-        let exerciseModel = ExerciseCellModel.init(id: data.id, name: data.name, category: [Item(id:data.id, name: data.category)], image: imageArray , equiments: nil, muscles: nil)
+        let exerciseModel = ExerciseCellModel.init(id: data.id, name: data.name, category: [Item(id:data.id, name: data.category)], image: imageArray , equiments: nil, muscles: nil, description: nil)
         return exerciseModel
     }
     

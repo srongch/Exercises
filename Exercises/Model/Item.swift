@@ -18,6 +18,13 @@ struct Item: Codable, Identifiable {
     let name: String
 }
 
+extension Item {
+    static func createExtraIndexItem(name: String)-> Item{
+        let item = Item(id: -1, name: name)
+        return item
+    }
+}
+
 typealias Category = Item
 typealias Equipment = Item
 typealias Muscle = Item

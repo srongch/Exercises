@@ -44,7 +44,7 @@ extension ExerciseApi: TargetType {
         case .getEquipment: return "equipment/"
         case .getMuscle: return "muscle/"
         case .getCategory: return "exercisecategory/"
-        case .getExerciseById(let id): return "exercise/" + String(id) + "/"
+        case .getExerciseById(let id): return "exerciseinfo/" + String(id) + "/"
         }
     }
     public var method: Moya.Method {

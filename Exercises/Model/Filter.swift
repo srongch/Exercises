@@ -9,12 +9,12 @@
 import Foundation
 
 enum Filter {
-    case muscles (String)
+    case category (Int)
     
-    var value: (key: String, value: String) {
+    var value: (key: String, value: Int) {
         switch self {
-        case .muscles (let value):
-            return ("muscles", value)
+        case .category (let value):
+            return ("category", value)
         }
     }
 }
