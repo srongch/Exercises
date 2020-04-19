@@ -13,7 +13,7 @@ protocol ModelListProtocol {
     var count: Int {get set }
     var next: String? {get set }
     var previous: String? {get set }
-    var list: [ItemList] {get set }
+    var list: [ItemList]? {get set }
     
 }
 
@@ -32,10 +32,11 @@ extension ModelListProtocol {
     }
     
     mutating func merge(newObject : Self){
+        guard (self.list != nil) else {return }
         self.count = newObject.count
         self.next = newObject.next
         self.previous = newObject.previous
-        self.list += newObject.list
+        self.list! += newObject.list ?? []
     }
     
     // where page start from 1
@@ -55,31 +56,31 @@ extension ModelListProtocol {
     
     
     func numberOfItem()-> Int {
-        return self.list.count
+        return self.list?.count ?? 0
     }
     
     func itemAtIdex(index: Int)-> ItemList? {
-        return self.list[safeIndex: index]
+        return self.list?[safeIndex: index]
     }
     
     
 }
 extension ModelListProtocol where ItemList: Identifiable {
     func toDictionary()-> [Id: ItemList] {
-      return list.reduce(into: [Id: ItemList]()) {
+      return list?.reduce(into: [Id: ItemList]()) {
         $0[$1.id] = $1
-      }
+        } ?? [:]
     }
 }
 
 
-
+// Model for api/v2/exercise/  |  api/v2/exerciseimage/ |  api/v2/equipment/  |  api/v2/muscle/   | api/v2/exercisecategory/
 struct ModelList<T: Codable>: Codable, ModelListProtocol {
     typealias ItemList = T
     var count: Int
     var next: String?
     var previous: String?
-    var list: [T]
+    var list: [T]?
     
     enum CodingKeys: String, CodingKey {
         case count
@@ -90,13 +91,3 @@ struct ModelList<T: Codable>: Codable, ModelListProtocol {
     
 }
 
-
-//
-//extension ModelListProtocol where T: Mappable {
-//    func toDictionArray()-> [Id: [T]] {
-//        guard self.list.count > 0,
-//            let item = self.list.first else {return [:]}
-//        return [item.mapKey: list]
-//    }
-//
-//}

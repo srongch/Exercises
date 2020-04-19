@@ -8,6 +8,7 @@
 
 import Foundation
 
+// custom key class to use with NSCache
 final class CustomKey<T: Hashable>: NSObject{
     let key: T
     init(key: T) {

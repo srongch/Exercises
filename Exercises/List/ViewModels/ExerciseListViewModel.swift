@@ -17,6 +17,7 @@ class ExerciseListViewModel {
         case all
         case search
     }
+    
     private var listState: StateCase = .all
     
     private let network: ExerciseNetworkProtocol
@@ -29,43 +30,36 @@ class ExerciseListViewModel {
             }
         }
     }
-    var filter: Filter? {
+    
+    private var filter: Filter? {
         guard let filter = selectedBodyPart, filter.id >= 0 else {return nil}
         return .category(filter.id)
     }
     var search: String? {
         didSet {
             if oldValue != search {
-//                print("Old value is \(oldValue) and new is \(search)")
-                print("filter value: \(search)")
                 self.reloadList()
             }else{
-                print(" no search : \(search)")
+                print(" no need to search")
             }
-            
         }
     }
     
-//    var categoryDictionary: [Id: Category] = [:]
-//    var musclesDictionary: [Id: Muscle] = [:]
-//    var equimentDictionary: [Id: Equipment] = [:]
-//    var exerciseList: [Exercise] = []
-//    var imageList: [ExerciseId: [Image]] = [:]
     private var imageList = NSCache<CustomKey<Int>, List<Image>>()
     
-    typealias Handler = (Swift.Result<PageIndex, Error>) -> Void
+    typealias Handler = (Swift.Result<Bool, Error>) -> Void
     var completionHandler: Handler?
     
-    var isLoading: Bool = false
+    private var isLoading: Bool = false
 
-    let group = DispatchGroup()
-    let mainQueue = DispatchQueue.main
+    private let group = DispatchGroup()
+    private let mainQueue = DispatchQueue.main
     
-    let musclesListManager: MusclesListManager
-    let categoryListManager: CategoryListManager
-    let equipmentListManager: EquipmentListManager
-    let exerciseListManager: ExerciseListManager
-    lazy var searchManager: SearchManager = {
+    private let musclesListManager: MusclesListManager
+    private let categoryListManager: CategoryListManager
+    private let equipmentListManager: EquipmentListManager
+    private let exerciseListManager: ExerciseListManager
+    private lazy var searchManager: SearchManager = {
         let search = SearchManager.init(network: self.network)
         return search
     }()
@@ -91,22 +85,19 @@ class ExerciseListViewModel {
         return (filterList, self.selectedBodyPart)
     }
     
-    init(network: ExerciseNetworkProtocol, initialPage: Int? = 1) {
+    init(network: ExerciseNetworkProtocol) {
         self.network = network
-        self.nextPage = initialPage
         self.musclesListManager = MusclesListManager.init(dispatchGroup: group, network: network)
         self.categoryListManager = CategoryListManager.init(dispatchGroup: group, network: network)
         self.equipmentListManager = EquipmentListManager.init(dispatchGroup: group, network: network)
         self.exerciseListManager = ExerciseListManager.init(dispatchGroup: nil, network: network)
         self.exerciseListManager.handler = {[weak self] result in
              self?.isLoading = false
-            print(self?.exerciseListManager.pageIndex)
             self?.completionHandler?(result)
-            
         }
     }
     
-    func reloadList(){
+    private func reloadList(){
         if let search = self.search {
             self.listState = .search
            self.searchManager.handler = {[weak self] result in
@@ -117,13 +108,11 @@ class ExerciseListViewModel {
         }else{
             self.listState = .all
             if self.numberOfItem() > 0 {
-                self.completionHandler?(.success(1))
+                self.completionHandler?(.success(true))
             }else{
                 self.exerciseListManager.reload(filter: filter)
             }
-           
         }
-        
     }
     
     func initialFetch(completionHandler: Handler?){
@@ -132,11 +121,11 @@ class ExerciseListViewModel {
         self.musclesListManager.load()
         self.categoryListManager.load()
         self.equipmentListManager.load()
-                group.notify(queue: .main) {
-                    print("done")
-                    self.isLoading = false
-                    self.fetchExercise()
-                }
+        group.notify(queue: .main) {
+            print("done")
+            self.isLoading = false
+            self.fetchExercise()
+        }
     }
     
     func numberOfItem()-> Int {
@@ -149,6 +138,18 @@ class ExerciseListViewModel {
         
     }
     
+    var shouldShowReloadCell: Bool{
+        return self.search == nil ? true : false
+    }
+    
+    var shouldShowSearchEmtpyCell: Bool{
+        return (self.numberOfItem() == 0 && self.search != nil) ? true : false
+    }
+    
+    var shouldShowShorterHeight: Bool{
+        return self.listState == .all ? false : true
+    }
+    
     func itemAtIdex(index: Int)-> ExerciceInforViewable? {
         switch self.listState {
         case .all:
@@ -159,7 +160,6 @@ class ExerciseListViewModel {
             let image = self.imageList.object(forKey: CustomKey.init(key: exercise.id))
             
             let exerciseModel = ExerciseCellModel.init(id: exercise.id, name: exercise.name, category: category, image: image?.list, equiments: equipment, muscles: muslces, description: nil)
-            print(exerciseModel)
             return exerciseModel
         default:
             guard let search = self.searchManager.list?.itemAtIdex(index: index) else {return nil}
@@ -167,7 +167,6 @@ class ExerciseListViewModel {
             return search.toExerciceInforViewable
         }
 
-        
     }
     
     func loadMore() {
@@ -178,8 +177,7 @@ class ExerciseListViewModel {
         self.exerciseListManager.loadMore(filter:filter )
     }
     
-    func fetchExercise(){
-
+    private func fetchExercise(){
         self.isLoading = true
         self.exerciseListManager.reload(filter: self.filter)
     }
@@ -203,31 +201,11 @@ class ExerciseListViewModel {
             }
         }
         imageManager.loadImageFor(id: exerciseId)
-        
-        
-//
-//
-//
-//        firstly {
-//            network.getImageList(for: exerciseId)
-//        }.done {[weak self] imageList in
-//           print("finish image ")
-//            let imageList = List.init(list: imageList.list, id: <#Int#>)
-//            self?.imageList.setObject(imageList, forKey: CustomKey(key: exerciseId))
-//          // print("countLimit \(self?.imageList.countLimit) ")
-//            completion?(imageList)
-//
-//        }.catch { [weak self] error in
-//            print("\(error.localizedDescription)")
-////            guard let strongSelf = self else { return }
-////            strongSelf.delegate?.error(error: error.localizedDescription)
-//        }
     }
     
     func loadImageForExercise(id exerciseId: ExerciseId) -> List<Image>?{
         print(imageList.description)
         let object = imageList.object(forKey: CustomKey(key: exerciseId))
-        print(object == nil ? "no" : "yes")
         return object
     }
 }

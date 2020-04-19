@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Model for api/v2/exerciseinfo/<id>/
 struct ExerciseInfo: Codable {
     let name: String
     let category: Item

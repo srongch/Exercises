@@ -10,8 +10,7 @@ import UIKit
 
 class ExerciseDetailViewController: UIViewController {
 
-    enum Section: String,  CaseIterable {
-        
+    internal enum Section: String,  CaseIterable {
         case title = "title"
         case image = "image"
         case description = "Description"
@@ -41,9 +40,9 @@ class ExerciseDetailViewController: UIViewController {
             collectionView.contentInsetAdjustmentBehavior = .never
             
             collectionView.register(
-                HeaderView.self,
-                forSupplementaryViewOfKind: HeaderView.className,
-                withReuseIdentifier: HeaderView.className)
+                SectionHeaderView.self,
+                forSupplementaryViewOfKind: SectionHeaderView.className,
+                withReuseIdentifier: SectionHeaderView.className)
         }
     }
     
@@ -51,27 +50,17 @@ class ExerciseDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.viewModel.completionHandler = {[weak self] result in
-            print("done")
-            self?.loadingView.stopAnimating()
-            self?.collectionView.reloadData()
+          AlertView.ifNeedShowAlert(for: self, result: result, errorClosure: {
+            self?.dismiss(animated: true, completion: nil)
+          }) {
+              self?.loadingView.stopAnimating()
+              self?.collectionView.reloadData()
+          }
         }
         self.viewModel.loadData()
         
 
         // Do any additional setup after loading the view.
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        // Hide the navigation bar on the this view controller
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        // Show the navigation bar on other view controllers
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
     @IBAction func backPressed(_ sender: Any) {
@@ -89,29 +78,21 @@ class ExerciseDetailViewController: UIViewController {
 
 }
 
-
-
 extension ExerciseDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let supplementaryView = collectionView.dequeueReusableSupplementaryView(
+        guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(
           ofKind: kind,
-          withReuseIdentifier: HeaderView.className,
-          for: indexPath) as? HeaderView else { fatalError("Cannot create header view") }
+          withReuseIdentifier: SectionHeaderView.className,
+          for: indexPath) as? SectionHeaderView else { fatalError("Cannot create header view") }
 
-        supplementaryView.label.text = Section.allCases[indexPath.section].rawValue
-        return supplementaryView
+        sectionHeader.configure(text: Section.allCases[indexPath.section].rawValue)
+        return sectionHeader
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//        self.performSegue(withIdentifier: "detailSegue", sender: nil)
-//    }
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //        return self.viewModel.nu
+        
         let sectionLayoutKind = Section.allCases[section]
                switch sectionLayoutKind {
                case .title:

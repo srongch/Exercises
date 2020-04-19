@@ -9,10 +9,10 @@
 import Foundation
 import PromiseKit
 
-class SearchManager: ListManager<SearchExerciseList> {
+final class SearchManager: ListManager<SearchExerciseList> {
     var term : String!
     func search(term: String){
-        self.term = term
+        self.term = term.appending(term.isEmpty ? " " : "")
         self.list = nil
         self.isAllLoaded = false
         self.load()

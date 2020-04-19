@@ -13,6 +13,7 @@ protocol Identifiable {
     var name: String {get}
 }
 
+//model for item: equipment, muscles, category
 struct Item: Codable, Identifiable {
     let id: Int
     let name: String

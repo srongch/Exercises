@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+// custom value class to use with NSCache
 class List<T> {
     let id: Int
     let list: [T]

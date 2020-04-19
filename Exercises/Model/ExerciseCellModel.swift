@@ -8,6 +8,7 @@
 
 import Foundation
 
+//model and protocol for displaying data on ViewController.
 protocol ExerciceInforViewable {
     var id: Int {get}
     var name: String { get }

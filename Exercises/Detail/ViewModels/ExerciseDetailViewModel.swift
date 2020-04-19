@@ -8,20 +8,18 @@
 
 import Foundation
 
-
-
 class ExerciseDetailViewModel {
-    let exerciseId: Int
-    let exerciseInforManger: ExerciseInfoManager
-    let imageListManager: ExerciseImageListManager
+    private let exerciseId: Int
+    private let exerciseInforManger: ExerciseInfoManager
+    private let imageListManager: ExerciseImageListManager
     
-    let group = DispatchGroup()
-    let mainQueue = DispatchQueue.main
+    private let group = DispatchGroup()
+    private let mainQueue = DispatchQueue.main
     
-    var exerciseInfor: ExerciceInforViewable?
+    private var exerciseInfor: ExerciceInforViewable?
     
     typealias Handler = (Swift.Result<Bool, Error>) -> Void
-       var completionHandler: Handler?
+    var completionHandler: Handler?
     
     init(exerciseId: Int, exerciseInforManger: ExerciseInfoManager, imageListManager: ExerciseImageListManager){
         self.exerciseId = exerciseId
@@ -41,9 +39,6 @@ class ExerciseDetailViewModel {
             }
             self.exerciseInfor = data.toExerciceInforViewable(with: images)
             self.completionHandler?(.success(true))
-            print( self.exerciseInforManger.data)
-            print( self.imageListManager.list)
-//            print(self.exerciseInforManger.data.to)
                print("done")
            }
     }

@@ -9,6 +9,17 @@
 import UIKit
 
 extension ExerciseListViewController{
+    func configureSearchviewController(){
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Exercise"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+        searchController.searchBar.scopeButtonTitles = []
+        searchController.searchBar.delegate = self
+        navigationItem.hidesSearchBarWhenScrolling = true
+    }
     
     @objc func searchExercise(_ searchBar: UISearchBar) {
         guard let query = searchBar.text, query.trimmingCharacters(in: .whitespaces) != "" else {

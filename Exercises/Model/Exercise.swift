@@ -12,11 +12,8 @@ typealias CategoryId = Int
 typealias EquipmentIdList = [Int]
 typealias MusclesIdList = [Int]
 
-protocol Searchable  {
-    var name: String { get }
-}
-
-struct Exercise: Codable, Searchable {
+//Model for each item for api/v2/exercise/1/
+struct Exercise: Codable {
     let id: Int
     let name: String
     let categoryId: CategoryId
@@ -41,5 +38,19 @@ struct Exercise: Codable, Searchable {
         equipmentIdList = try values.decode(EquipmentIdList.self, forKey: .equipmentIdList)
         musclesIdList = try values.decode(MusclesIdList.self, forKey: .musclesIdList)
         musclesSecondaryIdList = try values.decode(MusclesIdList.self, forKey: .musclesSecondaryIdList)
+    }
+    
+    init(id: Int,
+     name: String,
+     categoryId: CategoryId,
+     equipmentIdList: EquipmentIdList,
+     musclesIdList: MusclesIdList,
+     musclesSecondaryIdList: MusclesIdList) {
+        self.id = id
+        self.name = name
+        self.categoryId = categoryId
+        self.equipmentIdList = equipmentIdList
+        self.musclesIdList = musclesIdList
+        self.musclesSecondaryIdList = musclesSecondaryIdList
     }
 }

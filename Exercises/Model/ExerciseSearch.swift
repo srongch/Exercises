@@ -8,8 +8,10 @@
 
 import Foundation
 
+//Model for api/v2/exercise/search/
+
 struct ExerciseSearchList: Codable {
-    var list: [ExerciseSearch]
+    var list: [ExerciseSearch]?
     
     enum CodingKeys: String, CodingKey {
         case list = "suggestions"
@@ -19,13 +21,16 @@ struct ExerciseSearchList: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         self.list = try values.decode([ExerciseSearch].self, forKey: .list)
     }
+    
+    init(list: [ExerciseSearch]) {
+        self.list = list
+    }
 }
 
 extension ExerciseSearchList: ModelListProtocol{
-
     var count: Int {
         get {
-            return list.count
+            return list?.count ?? 0
         }
         set { }
     }
@@ -48,25 +53,23 @@ extension ExerciseSearchList: ModelListProtocol{
     
 }
 
-
-struct ExerciseSearch: Codable {
-    struct SearchResult: Codable {
-        let id: Int
-        let name: String
-        let category: String
-        let imageThumnail: String?
-        let image: String?
-        
-        enum CodingKeys: String, CodingKey {
-            case id
-            case name
-            case category
-            case image
-            case imageThumnail = "image_thumbnail"
-        }
-        
-    }
+struct SearchResult: Codable {
+    let id: Int
+    let name: String
+    let category: String
+    let imageThumnail: String?
+    let image: String?
     
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case category
+        case image
+        case imageThumnail = "image_thumbnail"
+    }
+}
+struct ExerciseSearch: Codable {
+
     var imageArray: [Item]{
         guard let image = self.data.image else {
             return []
@@ -74,7 +77,7 @@ struct ExerciseSearch: Codable {
         }
         return [Item(id:data.id, name: image)]
     }
-
+    
     let data: SearchResult
     
     var toExerciceInforViewable: ExerciceInforViewable{

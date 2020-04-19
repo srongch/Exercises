@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 enum TextCellStyle {
     case multiLine
     case oneLine
@@ -19,7 +20,7 @@ enum TextCellStyle {
         }
     }
     
-    var cornerRedius: CGFloat {
+    var cornerRadius: CGFloat {
         switch self {
         case .multiLine:
             return 0.0
@@ -60,7 +61,7 @@ class TextCollectionViewCell: UICollectionViewCell {
     func configure(text: String, style: TextCellStyle){
         self.label.text = style.extraSpace + text + style.extraSpace
         self.label.numberOfLines = style.numberOfLine
-        self.label.layer.cornerRadius = style.cornerRedius
+        self.label.layer.cornerRadius = style.cornerRadius
         self.label.backgroundColor = style.bgColor
     }
     

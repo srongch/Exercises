@@ -14,14 +14,10 @@ struct PromiseLoader<T>{
         firstly {
             task
         }.done { result  in
-         //   print(result)
             handler(.success(result))
         }.catch {error in
             print(error.localizedDescription)
-       //     fatalError("error")
             handler(.failure(error))
-            //                guard let strongSelf = self else { return }
-            //                strongSelf.delegate?.error(error: error.localizedDescription)
         }
     }
 

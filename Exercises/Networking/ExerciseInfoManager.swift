@@ -9,17 +9,16 @@
 import Foundation
 import PromiseKit
 
-class ExerciseInfoManager {
+final class ExerciseInfoManager {
     private var id: Int?
     private(set) var data: ExerciseInfo?
     private let network: ExerciseNetworkProtocol
     private var group: DispatchGroup?
+    typealias Completion = ((Swift.Result<Bool,Error>)-> Void)
     
     init(networkManager: ExerciseNetworkProtocol) {
         self.network = networkManager
     }
-    
-    typealias Completion = ((Swift.Result<Bool,Error>)-> Void)
     
     func load(dispatchGroup: DispatchGroup? = nil, execiseId: Int, completion: Completion?){
         self.group = dispatchGroup

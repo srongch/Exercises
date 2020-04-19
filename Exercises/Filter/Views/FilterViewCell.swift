@@ -23,8 +23,6 @@ enum FilterCellState {
 
 class FilterViewCell: UITableViewCell {
 
-
-    
     @IBOutlet weak var lable: UILabel!
     
     override func awakeFromNib() {

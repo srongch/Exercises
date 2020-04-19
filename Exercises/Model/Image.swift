@@ -8,10 +8,7 @@
 
 import Foundation
 
-protocol Mappable {
-    var mapKey: Int { get }
-}
-
+//model for image item
 struct Image: Codable, Identifiable {
     let id: Int
     let image: String
@@ -27,14 +24,6 @@ struct Image: Codable, Identifiable {
         case isMain = "is_main"
         case image
         case exercise
-    }
-    
-}
-
-
-extension Image: Mappable{
-    var mapKey: Int {
-        return self.exercise
     }
     
 }

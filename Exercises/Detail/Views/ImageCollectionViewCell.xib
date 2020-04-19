@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="348" height="315"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="roberto-nickson-_em5tYXuOQc-unsplash.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="IAU-8e-Wop">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IAU-8e-Wop">
                         <rect key="frame" x="0.0" y="0.0" width="348" height="315"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
@@ -36,7 +36,4 @@
             <point key="canvasLocation" x="-332" y="6"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="roberto-nickson-_em5tYXuOQc-unsplash.jpg" width="3648" height="5472"/>
-    </resources>
 </document>
