@@ -8,21 +8,23 @@
 
 import UIKit
 
-enum FilterCellState {
-    case selected
-    case none
-    var accessoryType: UITableViewCell.AccessoryType {
-        switch self {
-        case .selected:
-            return .checkmark
-        default:
-            return .none
-        }
-    }
-}
+
 
 class FilterViewCell: UITableViewCell {
-
+    
+    enum CellState {
+        case selected
+        case none
+        var accessoryType: UITableViewCell.AccessoryType {
+            switch self {
+            case .selected:
+                return .checkmark
+            default:
+                return .none
+            }
+        }
+    }
+    
     @IBOutlet weak var lable: UILabel!
     
     override func awakeFromNib() {
@@ -36,13 +38,13 @@ class FilterViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configure(item: Identifiable, state: FilterCellState){
+    func configure(item: Identifiable, state: CellState){
         self.lable.text = item.name
         self.updateState(state: state)
         
     }
     
-    func updateState(state: FilterCellState){
+    func updateState(state: CellState){
         self.accessoryType = state.accessoryType
     }
 }

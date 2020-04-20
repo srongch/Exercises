@@ -22,6 +22,12 @@ protocol ExerciceInforViewable {
     var allMusclesList: [String] { get }
 }
 
+extension ExerciceInforViewable{
+    var cleanedDescription:String? {
+        return self.description?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+    }
+}
+
 
 struct ExerciseCellModel: ExerciceInforViewable {
     let id: Int

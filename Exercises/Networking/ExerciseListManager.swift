@@ -10,7 +10,7 @@ import Foundation
 import PromiseKit
 
 final class ExerciseListManager: ListManager<ExerciseList>{
-    private var filter : Filter?
+    private(set) var filter : Filter?
     
     func loadMore(filter : Filter?){
         self.set(filter: filter)
@@ -19,8 +19,7 @@ final class ExerciseListManager: ListManager<ExerciseList>{
     
     func reload(filter : Filter?){
         self.set(filter: filter)
-        self.list = nil
-        self.isAllLoaded = false
+        self.reset()
         self.load()
     }
     

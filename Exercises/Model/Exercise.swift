@@ -16,6 +16,7 @@ typealias MusclesIdList = [Int]
 struct Exercise: Codable {
     let id: Int
     let name: String
+    let description: String
     let categoryId: CategoryId
     let equipmentIdList: EquipmentIdList
     let musclesIdList: MusclesIdList
@@ -24,6 +25,7 @@ struct Exercise: Codable {
     enum CodingKeys: String, CodingKey {
         case id
         case name
+        case description
         case categoryId = "category"
         case equipmentIdList = "equipment"
         case musclesIdList = "muscles"
@@ -34,6 +36,7 @@ struct Exercise: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(Int.self, forKey: .id)
         name = try values.decode(String.self, forKey: .name)
+        description = try values.decode(String.self, forKey: .description)
         categoryId = try values.decode(CategoryId.self, forKey: .categoryId)
         equipmentIdList = try values.decode(EquipmentIdList.self, forKey: .equipmentIdList)
         musclesIdList = try values.decode(MusclesIdList.self, forKey: .musclesIdList)
@@ -42,12 +45,14 @@ struct Exercise: Codable {
     
     init(id: Int,
      name: String,
+     description: String,
      categoryId: CategoryId,
      equipmentIdList: EquipmentIdList,
      musclesIdList: MusclesIdList,
      musclesSecondaryIdList: MusclesIdList) {
         self.id = id
         self.name = name
+        self.description = description
         self.categoryId = categoryId
         self.equipmentIdList = equipmentIdList
         self.musclesIdList = musclesIdList

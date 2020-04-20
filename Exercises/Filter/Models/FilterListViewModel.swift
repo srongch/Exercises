@@ -9,8 +9,8 @@
 import Foundation
 
 class FilterListViewModel{
-    let filterList: [Identifiable]
-    var preSelectedItem: Identifiable?
+    private let filterList: [Identifiable]
+    private var preSelectedItem: Identifiable?
     
     init(filterList: [Identifiable], preSelectedItem: Identifiable? = nil) {
         self.filterList = filterList
@@ -27,7 +27,7 @@ class FilterListViewModel{
         return self.filterList[indexPath.row]
     }
     
-    func stateForItem(item: Identifiable) -> FilterCellState{
+    func stateForItem(item: Identifiable) -> FilterViewCell.CellState{
         return preSelectedItem?.id == item.id ? .selected : .none
     }
     

@@ -64,7 +64,7 @@ class ExerciseDetailViewModel {
     }
     
     var description:String {
-        return self.exerciseInfor?.description?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) ?? ""
+        return self.exerciseInfor?.cleanedDescription ?? ""
     }
     
     func equipmetAtIndex(index: Int) -> String? {

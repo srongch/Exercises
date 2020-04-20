@@ -54,7 +54,7 @@ class ListManageTest: XCTestCase {
             XCTAssertNotNil(musclesListManager.list)
              XCTAssertNotNil(musclesListManager.dictionary)
             
-            let dictionary = MockData.muscleListList().toDictionary()
+            let dictionary = MockData.muscleList().toDictionary()
             XCTAssertEqual(dictionary.count, musclesListManager.dictionary?.count)
             
         }
@@ -74,13 +74,13 @@ class ListManageTest: XCTestCase {
             XCTAssertNotNil(equipmentListManager.list)
              XCTAssertNotNil(equipmentListManager.dictionary)
             
-            let dictionary = MockData.muscleListList().toDictionary()
+            let dictionary = MockData.muscleList().toDictionary()
             XCTAssertEqual(dictionary.count, equipmentListManager.dictionary?.count)
             
         }
     }
     
-    func testExerciseListManager() throws{
+    func testExerciseListManagerand() throws{
         let exp = expectation(description: "ExerciseListManager loadfinish")
         exp.expectedFulfillmentCount = 2
         
@@ -89,12 +89,12 @@ class ListManageTest: XCTestCase {
             XCTAssertNotNil(exerciseListManager.list)
              XCTAssertNil(exerciseListManager.dictionary)
             
-            print("current page: \(exerciseListManager.pageIndex)")
-            
             if exerciseListManager.pageIndex == 1 {
                  XCTAssertEqual(2, exerciseListManager.list?.list?.count)
+                XCTAssertEqual(false, exerciseListManager.isAllLoaded)
             }else if exerciseListManager.pageIndex == 2 {
                 XCTAssertEqual(4, exerciseListManager.list?.list?.count)
+                XCTAssertEqual(true, exerciseListManager.isAllLoaded)
             }
             
             exerciseListManager.loadMore(filter: nil)
@@ -103,15 +103,66 @@ class ListManageTest: XCTestCase {
         exerciseListManager.loadMore(filter: nil)
         // Wait until the expectation is fulfilled, with a timeout of 10 seconds.
         wait(for: [exp], timeout: 10.0)
-//        waitForExpectations(timeout: 10) { error in
-//            if let error = error {
-//                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-//            }
-//
-//            exerciseListManager.loadMore(filter: nil)
-//        }
+    }
+    
+    
+    func testExerciseListManagerFilterByBodyPart() throws{
+        let exp = expectation(description: "ExerciseListManagerFilter loadfinish")
+        exp.expectedFulfillmentCount = 1
+        
+        //filter by category Id = 1 expected 2 item
+        let filter = MockData.mockFilter
+        
+        let exerciseListManager = ExerciseListManager.init(network: fakeNetwork)
+        exerciseListManager.handler = { result in
+            XCTAssertNotNil(exerciseListManager.list)
+            XCTAssertEqual(true, exerciseListManager.isAllLoaded)
+            exp.fulfill()
+        }
+        exerciseListManager.reload(filter: filter)
+        // testing reset all the proper
+        XCTAssertNotNil(exerciseListManager.filter)
+        XCTAssertFalse(exerciseListManager.isAllLoaded)
+        XCTAssertNil(exerciseListManager.list)
+        // Wait until the expectation is fulfilled, with a timeout of 10 seconds.
+        wait(for: [exp], timeout: 10.0)
     }
 
+    func testExerciseImageListManager() throws{
+        let exp = expectation(description: "ExerciseImageListManager loadfinish")
+        exp.expectedFulfillmentCount = 1
+        
+        let exerciseImageListManager = ExerciseImageListManager.init(network: fakeNetwork)
+        exerciseImageListManager.handler = { result in
+            XCTAssertNotNil(exerciseImageListManager.list)
+            exp.fulfill()
+        }
+        exerciseImageListManager.loadImageFor(id: 1)
+        // testing reset all the proper
+        XCTAssertNil(exerciseImageListManager.list)
+        // Wait until the expectation is fulfilled, with a timeout of 10 seconds.
+        wait(for: [exp], timeout: 10.0)
+    }
+    
+    func testSearchManager() throws{
+        let exp = expectation(description: "SearchManager loadfinish")
+        exp.expectedFulfillmentCount = 1
+        let searchString = "Cable"
+        
+        let searchManager = SearchManager.init(network: fakeNetwork)
+        searchManager.handler = { result in
+            XCTAssertNotNil(searchManager.list)
+            exp.fulfill()
+        }
+        searchManager.search(term: searchString)
+        XCTAssertNotNil(searchManager.term)
+        XCTAssertEqual(searchString, searchManager.term)
+        // testing reset all the proper
+        // Wait until the expectation is fulfilled, with a timeout of 10 seconds.
+        wait(for: [exp], timeout: 10.0)
+    }
+    
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }

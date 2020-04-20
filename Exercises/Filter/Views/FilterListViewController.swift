@@ -59,7 +59,7 @@ extension FilterListViewController : UITableViewDelegate{
         updateCellState(tableView, indexPath: indexPath, state: .none)
     }
     
-    func updateCellState(_ tableView: UITableView, indexPath: IndexPath, state: FilterCellState){
+    func updateCellState(_ tableView: UITableView, indexPath: IndexPath, state: FilterViewCell.CellState){
         let cell = tableView.cellForRow(at: indexPath) as? FilterViewCell
                cell?.updateState(state: state)
     }

@@ -17,7 +17,7 @@ class FakeNetwork: ExerciseNetworkProtocol{
     func getExerciseList(page: Int, filter: Filter?) -> Promise<ExerciseList> {
         
         return Promise { seal in
-            seal.fulfill(MockData.exerciseList(page: page))
+            seal.fulfill(filter != nil ? MockData.exerciseList(filter: filter!) : MockData.exerciseList(page: page))
         }
     }
     
@@ -36,13 +36,13 @@ class FakeNetwork: ExerciseNetworkProtocol{
     
     func getMusclesList() -> Promise<MusclesList> {
         return Promise { seal in
-            seal.fulfill(MockData.muscleListList())
+            seal.fulfill(MockData.muscleList())
         }
     }
     
     func getEquimentList() -> Promise<EquimentList> {
         return Promise { seal in
-            seal.fulfill(MockData.equimentListList())
+            seal.fulfill(MockData.equimentList())
         }
     }
     

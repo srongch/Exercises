@@ -13,8 +13,7 @@ final class SearchManager: ListManager<SearchExerciseList> {
     var term : String!
     func search(term: String){
         self.term = term.appending(term.isEmpty ? " " : "")
-        self.list = nil
-        self.isAllLoaded = false
+        self.reset()
         self.load()
     }
     

@@ -94,7 +94,7 @@ extension ExerciseListViewController: UICollectionViewDelegate, UICollectionView
         let sectionLayoutKind = Section.allCases[section]
                switch sectionLayoutKind {
                case .main:
-                return self.viewModel.numberOfItem()
+                return self.viewModel.numberOfItem
                case .reload:
                    return self.viewModel.shouldShowReloadCell ? 1 : 0
                case .empty:

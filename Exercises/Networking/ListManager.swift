@@ -15,22 +15,27 @@ class ListManager<T:ModelListProtocol> {
     private var group: DispatchGroup?
     internal let network: ExerciseNetworkProtocol
     
-    var list: T?
+    private(set) var list: T?
     var dictionary: [Id: Identifiable]?
     var handler: ((Swift.Result<Bool,Error>)-> Void)?
     
-    internal var task: Promise<T>?{
+    var task: Promise<T>?{
         return nil
     }
     //where inital page is 1
     var pageIndex: Int{
         self.list?.currentPage ?? 1
     }
-    var isAllLoaded: Bool = false
+    private(set) var isAllLoaded: Bool = false
     
     init(dispatchGroup: DispatchGroup? = nil, network:ExerciseNetworkProtocol){
         self.group = dispatchGroup
         self.network = network
+    }
+    
+    internal func reset() {
+        self.list = nil
+        self.isAllLoaded = false
     }
     
     func load(dispatchGroup: DispatchGroup? = nil){
