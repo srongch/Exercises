@@ -13,7 +13,7 @@ struct AlertView{
         switch result {
         case .failure:
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Error", message: title != nil ? title : "Something went worng.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error", message: title != nil ? title : "Something went wrong.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction!) in
                     print("Selected")
                     errorClosure()

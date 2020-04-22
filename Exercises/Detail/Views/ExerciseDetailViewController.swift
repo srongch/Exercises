@@ -11,10 +11,10 @@ import UIKit
 class ExerciseDetailViewController: UIViewController {
 
     internal enum Section: String,  CaseIterable {
-        case title = "title"
-        case image = "image"
+        case title = "Title"
+        case image = "Images"
         case description = "Description"
-        case equipment = "Equiment"
+        case equipment = "Equipments"
         case muscles = "Muscles"
         
     }
