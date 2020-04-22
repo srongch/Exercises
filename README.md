@@ -4,8 +4,8 @@
 
 # Exercise App
 
- iOS Application implementing the user stories that follow.
-## Installing
+ iOS Application implementing the user stories as follows.
+## Installation
 1. Run `pod install`
 2. Open `Exercises.xcworkspace`
 3. Run the project
